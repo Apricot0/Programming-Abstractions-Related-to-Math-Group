@@ -155,6 +155,16 @@ public static void main(String... args) {
        // Must print: [(center, 0.0, 0.0)]
 ```
 
+![Figure4](Figure4.png)
+
+Figure 4: Counterclockwise rotation through angle θ: the vector is initially aligned with the x-axis, and after the rotation, shown by the red arrow.
+
+![Figure5](Figure5.png)
+
+
+Figure 5: The square (left) initialized by passing arguments (3, 3), (2,3), (2,2), and (3,2) (in this order) is, indeed, a valid square. Without such a convention being followed, we could end up with non-polygonal open curves (right). If the constructor is called with four points that do not form a valid square, your constructor must throw an IllegalArgumentException.
+
+
 ### Task 3 ###
 Similarly, complete the implementation of the `Square`  class.
 
@@ -187,12 +197,12 @@ Your task in this question is to implement the symmetries of Square and RadialGr
 
 In this question, the total points are split equally between the implementation of radial graph symmetries and square symmetries.
 
-=
+---
 
--You may have additional methods in your classes even if such methods are not required by the interface. Such additional methods, however, must not be public.
--Any interface code given to you must not be changed!
+- You may have additional methods in your classes even if such methods are not required by the interface. Such additional methods, however, must not be public.
+- Any interface code given to you must not be changed!
 
--Please keep in mind these homework-related points mentioned in the syllabus.
+- Please keep in mind these homework-related points mentioned in the syllabus.
 
 - What to submit? The complete codebase (including classes and interfaces that were already given to you) as a single .zip file. Your zip file, once extracted, must contain three folders: core, arithmetic, and geometry. Your solution to the first question is expected to be in the arithmetic package, while the rest of your code must be in the geometry package.
 
