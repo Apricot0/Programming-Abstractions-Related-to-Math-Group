@@ -122,5 +122,19 @@ Formally, rotation in the 2-dimensional Euclidean space is defined by a 2 × 2 m
 points in the x-y plane counterclockwise by an angle θ (in radians), with respect to the positive x axis
 about the origin, a point (x, y) is transformed by
 
+$$
+\begin{bmatrix}
+cosθ & -sinθ\\
+sinθ & cosθ
+\end{bmatrix}	
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}=\begin{bmatrix}
+xcosθ -ysinθ\\
+xsinθ + ycosθ
+\end{bmatrix}	
+$$
+
 
 
