@@ -109,9 +109,9 @@ edges have the same length, and every edge direct
 away from the center.
 ![Figure3](Figure3.png)
 
-### Task2 ###
+### Task 2 ###
 
-There is an interface called `Shape` provided in the `geometry` package. In this question, we will consider (20)
+There is an interface called `Shape` provided in the `geometry` package. In this question, we will consider 
 a `RadialGraph`, which is meant to represent objects of the type shown in Fig. **2** and Fig. **3**. Such graphs
 show up all the time in social networks (e.g., the central node represents an influencer with the others
 representing followers). Your task in this question is to complete the implementation of the `RadialGraph`
@@ -135,6 +135,69 @@ xcosθ -ysinθ\\
 xsinθ + ycosθ
 \end{bmatrix}	
 $$
+
+Without the matrix notation used in linear algebra, this simply means that such a rotation transforms the point (x,y) to the point (xcosθ−ysinθ,xsinθ+ycosθ). Visually, this rotation is shown in Fig. **4**.To rotate a shape using this formula, you need to ensure that the center of the shape is the origin (0, 0).
+It is a part of this assignment to figure out how to rotate a shape that has its center somewhere else.
+You should ensure that the following driver method in the `RadialGraph` class works with your code (pay attention to the documentation, which explains what must be printed for the test cases used in this driver method, and what exception must be thrown):
+
+```
+public static void main(String... args) {
+       Point center = new Point("center", 0, 0);
+       Point east = new Point("east", 1, 0);
+       Point west = new Point("west", -1, 0);
+       Point north = new Point("north", 0, 1);
+       Point south = new Point("south", 0, -1);
+       Point toofarsouth = new Point("south", 0, -2);
+       
+       // A single node is a valid radial graph.
+       RadialGraph lonely = new RadialGraph(center);
+       
+       // Must print: [(center, 0.0, 0.0)]
+```
+
+### Task 3 ###
+Similarly, complete the implementation of the `Square`  class.
+
+An empty constructor is already provided to you, which accepts four `Point`objects as its parameters. It is important to note that whether these points form a valid square may depend on the order in which these points are arranged. This was not a concern for radial graphs, but it does matter for a square! For example, a mistake in ordering the vertices could yield the right-side non-polygonal open curve shown in Fig. **5**. For this assignment, you can assume that the order in which the input arguments are provided to the constructor, will follow the order specified in the documentation of `Shape#toString()`.
+Recall that when we attempt to create a radial graph with invalid points, the constructor is required to throw an `IllegalArgumentException`. Similarly, when the `Sqaure` class’ constructor is called with four points that do not follow the above convention, it must throw an IllegalArgumentException.
+We are not providing a separate driver method for the `Square` class, because such a driver method will be nearly identical to the one we have provided for `RadialGraph`. You are highly encouraged to test your square implementation using such a method. In this method, you should test 
+
+(i) the creation of squares, 
+
+(ii) throwing exceptions as described above,
+
+ (iii) printing a square, 
+
+(iv) printing a rotated square, 
+
+(v) printing a translated square, and 
+
+(vi) calculating the center point.
+
+### Task 4 ###
+
+Now, we will use these two shapes, RadialGraph and Square, and add the concepts of their symmetry. Take a look at the GeometryTest class’ main(String[]) method. This is provided to you as an outline
+for testing your code. Here, you will see two classes being mentioned, called RadialGraphSymmetries and SquareSymmetries. You will also see two methods being used: areSymmetric, and symmetriesOf. Carefully consider the Symmetries interface implemented by these two classes, and come up with the correct signatures for these methods in the implementations. In particular, you need to ask
+
+*If the definition in the interface (i.e., the supertype) specifies returning a type T, can the method implementation in the class (which is its subtype) return a subtype of T? In other words, does Java allow covariant return types?*
+
+As shown in Fig. **1**, a square has eight symmetries (including the identity transformation). Symmetries of radial graphs are different, though. On one hand, the number of symmetries is not fixed (depends on the number of edges and the exact location of the neighbors receiving those edges). On the other hand, if any symmetry other than the identity transformation exists, it can be expressed purely through rotation.
+
+Your task in this question is to implement the symmetries of Square and RadialGraph in the two classes SquareSymmetries and RadialGraphSymmetries, respectively.
+
+In this question, the total points are split equally between the implementation of radial graph symmetries and square symmetries.
+
+=
+
+-You may have additional methods in your classes even if such methods are not required by the interface. Such additional methods, however, must not be public.
+-Any interface code given to you must not be changed!
+
+-Please keep in mind these homework-related points mentioned in the syllabus.
+
+- What to submit? The complete codebase (including classes and interfaces that were already given to you) as a single .zip file. Your zip file, once extracted, must contain three folders: core, arithmetic, and geometry. Your solution to the first question is expected to be in the arithmetic package, while the rest of your code must be in the geometry package.
+
+*Deviations from the expected submission format carries varying amounts of score penalty (depending on the amount of deviation).*
+
 
 
 
