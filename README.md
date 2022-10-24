@@ -3,8 +3,8 @@
 
 In this assignment, you will be using Java (make sure it is JDK 1.8 compliant) for programming. Moreover,
 this assignment requires you to invest quite a bit into thinking about abstraction before you start coding. It
-is based on a mathematical structure called group. Before we get to the code, let us define this concept:
-A nonempty set of elements G forms a group if in G there is a defined binary operation (which we will
+is based on a mathematical structure called **group**. Before we get to the code, let us define this concept:
+A nonempty set of elements G forms a **group** if in G there is a defined binary operation (which we will
 denote by · in this document), such that
 1. x, y ∈ G implies that x · y ∈ G. This property is called closure, and the set of elements is said to be
 closed under the operation.
