@@ -153,16 +153,36 @@ public static void main(String... args) {
        RadialGraph lonely = new RadialGraph(center);
        
        // Must print: [(center, 0.0, 0.0)]
+       
+       System.out.println(lonely);
+
+       // Must throw IllegalArgumentException, since the edges will not be of the same length
+       RadialGraph nope = new RadialGraph(center, Arrays.asList(north, toofarsouth, east, west));
+       
+       Shape g = new RadialGraph(center, Arrays.asList(north, south, east, west));
+
+       // Must follow the documentation in the Shape abstract class, and print the following string:
+       // [(center, 0.0, 0.0); (east, 1.0, 0.0); (north, 0.0, 1.0); (west, -1.0, 0.0); (south, 0.0, -1.0)]
+       System.out.println(g);
+
+       // After this counterclockwise rotation by 90 degrees, "north" must be at (-1, 0), and
+       // similarly for all the other radial points. The center, however, must remain exactly
+       // where it was.
+       g = g.rotateBy(90);
+
+       // you should similarly add tests for the translateBy(x, y) method
+}
 ```
 
 ![Figure4](Figure4.png)
 
-Figure 4: Counterclockwise rotation through angle θ: the vector is initially aligned with the x-axis, and after the rotation, shown by the red arrow.
+**Figure 4**: Counterclockwise rotation through angle θ: the vector is initially aligned with the x-axis, and after the rotation, shown by the red arrow.
 
 ![Figure5](Figure5.png)
 
 
-Figure 5: The square (left) initialized by passing arguments (3, 3), (2,3), (2,2), and (3,2) (in this order) is, indeed, a valid square. Without such a convention being followed, we could end up with non-polygonal open curves (right). If the constructor is called with four points that do not form a valid square, your constructor must throw an IllegalArgumentException.
+**Figure 5**: The square (left) initialized by passing arguments (3, 3), (2,3), (2,2), and (3,2) (in this order) is, indeed, a valid square. Without such a convention being followed, we could end up with non-polygonal open curves (right). If the constructor is called with four points that do not form a valid square, your constructor must throw an IllegalArgumentException.
+
 
 
 ### Task 3 ###
