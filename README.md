@@ -15,6 +15,7 @@ is called the identity element of the group.
 inverse. Often, we simply denote it by a
 −1
 .
+
 Much like programming, mathematics also relies on abstraction. Groups have become fundamentally important in modern mathematics because they distill the basic structural rules found in almost every important
 mathematical structure. Some are very obvious, such as the set of all integers with addition as the binary operation. Note that the same set is NOT a group with multiplication as the operation (no inverse)! However,
 as soon as we consider a bigger set, namely, the set of all real numbers, even with multiplication we have a
