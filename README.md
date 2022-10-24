@@ -12,8 +12,7 @@ closed under the operation.
 3. There exists an element e ∈ G such that a · e = e · a = a for all elements a ∈ G. This special element e
 is called the identity element of the group.
 4. For every a ∈ G, there exists an element b such that a · b = b · a = e. That is, every element has an
-inverse. Often, we simply denote it by a
-−1
+inverse. Often, we simply denote it by $a^{−1}$
 .
 
 Much like programming, mathematics also relies on abstraction. Groups have become fundamentally important in modern mathematics because they distill the basic structural rules found in almost every important
