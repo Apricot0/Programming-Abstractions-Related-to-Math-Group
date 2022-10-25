@@ -71,7 +71,7 @@ around its center by 0◦
 With this background, we are now ready to dive into some actual programming
 
 ### Task 1 ###
-Let G be the set {±1}, under the standard multiplication of real numbers. Your first task is to implement (20)
+Let G be the set {±1}, under the standard multiplication of real numbers. Your first task is to implement 
 this group in Java, with the name `FiniteGroupOfOrderTwo`.
 When thinking about implementing this, note that `Group` is a parameterized interface. In the implemented example, ZPlus, the parameter was obvious, because we already know the data type for
 “integers” (`Integer`, of course). But here, the valid data that forms the set of elements, consists of only
