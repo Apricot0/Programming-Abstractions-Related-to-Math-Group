@@ -106,6 +106,7 @@ the same length, and direct away from the center.
 radial graph. Each point is a Point object, all the
 edges have the same length, and every edge direct
 away from the center.
+
 ![Figure3](Figure3.png)
 
 ### Task 2 ###
@@ -180,7 +181,7 @@ public static void main(String... args) {
 ![Figure5](Figure5.png)
 
 
-**Figure 5**: The square (left) initialized by passing arguments (3, 3), (2,3), (2,2), and (3,2) (in this order) is, indeed, a valid square. Without such a convention being followed, we could end up with non-polygonal open curves (right). If the constructor is called with four points that do not form a valid square, your constructor must throw an IllegalArgumentException.
+**Figure 5**: The square (left) initialized by passing arguments (3, 3), (2,3), (2,2), and (3,2) (in this order) is, indeed, a valid square. Without such a convention being followed, we could end up with non-polygonal open curves (right). If the constructor is called with four points that do not form a valid square, your constructor must throw an `IllegalArgumentException`.
 
 
 
