@@ -115,7 +115,7 @@ There is an interface called `Shape` provided in the `geometry` package. In this
 a `RadialGraph`, which is meant to represent objects of the type shown in Fig. **2** and Fig. **3**. Such graphs
 show up all the time in social networks (e.g., the central node represents an influencer with the others
 representing followers). Your task in this question is to complete the implementation of the `RadialGraph`
-class, consistent with the requirements of the `Shap`e interface.
+class, consistent with the requirements of the `Shape` interface.
 Most of the implementation is straight-forward. Implementing rotation (in the rotateBy(int degrees)
 method), however, requires some mathematics!
 Formally, rotation in the 2-dimensional Euclidean space is defined by a 2 × 2 matrix. To rotate all the
