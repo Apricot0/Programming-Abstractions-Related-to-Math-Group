@@ -19,4 +19,9 @@ public class PlusOrMinusOne {
         set[1]=neg_one;
         return set;
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(value);
+    }
 }
