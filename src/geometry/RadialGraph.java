@@ -3,13 +3,16 @@ package geometry;
 import java.util.*;
 
 public class RadialGraph extends Shape {
+    private Point center;
+    private List<Point> neighbors;
 
     public RadialGraph(Point center, List<Point> neighbors) {
-        // TODO: part of assignment
+        this.center = center;
+        this.neighbors = neighbors;
     }
 
     public RadialGraph(Point center) {
-        // TODO: part of assignment
+        this.center = center;
     }
 
     @Override

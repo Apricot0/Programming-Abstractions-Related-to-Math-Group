@@ -11,6 +11,10 @@ public class PlusOrMinusOne {
         return value;
     }
 
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     static public PlusOrMinusOne[] values(){
         PlusOrMinusOne[] set = new PlusOrMinusOne[2];
         PlusOrMinusOne one = new PlusOrMinusOne(1);
