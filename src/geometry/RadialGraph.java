@@ -8,7 +8,17 @@ public class RadialGraph extends Shape {
 
     public RadialGraph(Point center, List<Point> neighbors) {
         this.center = center;
+        double length = Distance(center,neighbors.get(0));
+        for (int i = 0; i < neighbors.size();i++){
+            if (Distance(neighbors.get(i),center)!=length){
+                throw new IllegalArgumentException("Not all edges have the same length! ");
+            }
+        }
         this.neighbors = neighbors;
+    }
+
+    private static double Distance (Point a, Point b){
+        return Math.sqrt( (a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y));
     }
 
     public RadialGraph(Point center) {
@@ -17,22 +27,57 @@ public class RadialGraph extends Shape {
 
     @Override
     public RadialGraph rotateBy(int degrees) {
-        return null; // TODO: part of assignment
+        double newDegrees = Math.toRadians(degrees);
+        if (neighbors==null){
+            return this;
+        }
+
+        List<Point> newNeighbors = new ArrayList<Point>();
+        for (Point p: neighbors){
+            double newX, newY;
+            newX =((p.x-center.x)*Math.cos(newDegrees)-(p.y-center.y)*Math.sin(newDegrees))+center.x;
+            newY =((p.x-center.x)*Math.sin(newDegrees)+(p.y-center.y)*Math.cos(newDegrees))+center.y;
+            newX = (double)Math.round((newX*10)/10);
+            newY = (double)Math.round((newY*10)/10);
+            newNeighbors.add(new Point(p.name,newX,newY));
+        }
+        Point newCenter = center;
+        return new RadialGraph(newCenter,newNeighbors);
     }
 
     @Override
     public RadialGraph translateBy(double x, double y) {
-        return null; // TODO: part of assignment
+        if (neighbors==null){
+            return this;
+        }
+        List<Point> newNeighbors = new ArrayList<Point>();
+        for (Point p: neighbors){
+            double newX, newY;
+            newX = p.x + x;
+            newY = p.y + y;
+            newNeighbors.add(new Point(p.name,newX,newY));
+        }
+        Point newCenter = center;
+        return new RadialGraph(newCenter,newNeighbors);
     }
 
     @Override
     public String toString() {
-        return null; // TODO: part of assignment
+        String output = "[";
+        output+=center.toString();
+        if(neighbors!=null) {
+            for (int i = 0; i < neighbors.size(); i++) {
+                output += "; ";
+                output += neighbors.get(i).toString();
+            }
+        }
+        output+="]";
+        return output;
     }
 
     @Override
     public Point center() {
-        return null; // TODO: part of assignment
+        return center;
     }
 
     /* Driver method given to you as an outline for testing your code. You can modify this as you want, but please keep
@@ -54,7 +99,7 @@ public class RadialGraph extends Shape {
 
 
         // This line must throw IllegalArgumentException, since the edges will not be of the same length
-        RadialGraph nope = new RadialGraph(center, Arrays.asList(north, toofarsouth, east, west));
+        //RadialGraph nope = new RadialGraph(center, Arrays.asList(north, toofarsouth, east, west));
 
         Shape g = new RadialGraph(center, Arrays.asList(north, south, east, west));
 
@@ -65,7 +110,7 @@ public class RadialGraph extends Shape {
         // After this counterclockwise rotation by 90 degrees, "north" must be at (-1, 0), and similarly for all the
         // other radial points. The center, however, must remain exactly where it was.
         g = g.rotateBy(90);
-
+        System.out.println(g);
         // you should similarly add tests for the translateBy(x, y) method
     }
 }
