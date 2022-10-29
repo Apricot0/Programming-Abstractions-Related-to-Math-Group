@@ -20,7 +20,26 @@ public class RadialGraph extends Shape {
     private static double Distance (Point a, Point b){
         return Math.sqrt( (a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y));
     }
+    private static double TiltAngle (Point a, Point b) {
+        double xDiff = b.x-a.x;
+        double yDiff = b.y-a.y;
+        double tanVal = yDiff/xDiff;
+        double degree = Math.toDegrees(Math.atan(tanVal));
+        if (xDiff>=0){
+            if (yDiff>=0){
+                return degree;
+            }else{
+                return 360-degree;
+            }
+        }else{
+            if (yDiff>=0){
+                return 180 - degree;
+            }else{
+                return 360 + degree;
+            }
+        }
 
+    }
     public RadialGraph(Point center) {
         this.center = center;
     }
@@ -65,14 +84,30 @@ public class RadialGraph extends Shape {
     public String toString() {
         String output = "[";
         output+=center.toString();
-        if(neighbors!=null) {
-            for (int i = 0; i < neighbors.size(); i++) {
+        List<Point> sortedNeighbors = GraphSort(neighbors);
+        if(sortedNeighbors!=null) {
+            for (int i = 0; i < sortedNeighbors.size(); i++) {
                 output += "; ";
-                output += neighbors.get(i).toString();
+                output += sortedNeighbors.get(i).toString();
             }
         }
         output+="]";
         return output;
+    }
+
+    private List<Point> GraphSort(List<Point> neighbors) {
+        if (neighbors == null) return null;
+        List<Point> sortedNeighbors = new ArrayList<>();
+        Map <Double , Point> neighborsWithDegree = new TreeMap<Double , Point>();
+        for ( int i = 0; i<neighbors.size(); i++){
+            double degree = TiltAngle(center,neighbors.get(i));
+            neighborsWithDegree.put(degree,neighbors.get(i));
+
+        }
+        for ( Map.Entry <Double , Point> entry : neighborsWithDegree.entrySet()){
+            sortedNeighbors.add(entry.getValue());
+        }
+        return sortedNeighbors;
     }
 
     @Override
