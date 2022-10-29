@@ -12,12 +12,12 @@ import java.util.List;
 public class GeometryTest {
 
     public static void main(String... args) {
-        /*testRadialGraphSymmetries();
-        testSquareSymmetries();*/
+        /*testRadialGraphSymmetries();*/
+        testSquareSymmetries();
     }
-
-    private static void testRadialGraphSymmetries() {
 /*
+    private static void testRadialGraphSymmetries() {
+
         Point center = new Point("center", 0, 0);
         Point east   = new Point("east", 1, 0);
         Point west   = new Point("west", -1, 0);
@@ -40,7 +40,7 @@ public class GeometryTest {
         List<RadialGraph> symmetries = graphSymmetries.symmetriesOf(g1);
         for (RadialGraph g : symmetries) System.out.println(g);
     }
-
+ */
     private static void testSquareSymmetries() {
         Square sq1 = new Square(new Point("upper-right", 1, 1), new Point("upper-left", 0, 1),
                                 new Point("lower-left", 0, 0), new Point("lower-right", 1, 0));
@@ -57,7 +57,7 @@ public class GeometryTest {
         List<Square> symmetries = squareSymmetries.symmetriesOf(sq1);
         for (Square s : symmetries) System.out.println(s);
 
- */
+
     }
 
 }

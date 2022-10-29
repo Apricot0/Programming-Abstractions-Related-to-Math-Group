@@ -84,8 +84,8 @@ public class RadialGraph extends Shape {
     public String toString() {
         String output = "[";
         output+=center.toString();
-        List<Point> sortedNeighbors = GraphSort(neighbors);
-        if(sortedNeighbors!=null) {
+        if(neighbors!=null) {
+            List<Point> sortedNeighbors = GraphSort(neighbors);
             for (int i = 0; i < sortedNeighbors.size(); i++) {
                 output += "; ";
                 output += sortedNeighbors.get(i).toString();
