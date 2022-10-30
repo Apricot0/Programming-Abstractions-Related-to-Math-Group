@@ -58,7 +58,7 @@ public class Square extends Shape {
             throw new RuntimeException("Invalid Square");
         }
 
-        List<Point> newPoints = new ArrayList<Point>();
+        List<Point> newPoints = new ArrayList<>();
         for (Point p : squarePoints) {
             double newX, newY;
             newX = ((p.x - center.x) * Math.cos(newDegrees) - (p.y - center.y) * Math.sin(newDegrees)) + center.x;
@@ -77,7 +77,7 @@ public class Square extends Shape {
             throw new RuntimeException("Invalid Square");
         }
 
-        List<Point> newPoints = new ArrayList<Point>();
+        List<Point> newPoints = new ArrayList<>();
         for (Point p : squarePoints) {
             double newX, newY;
             newX = p.x + x;
@@ -111,10 +111,10 @@ public class Square extends Shape {
     private List<Point> GraphSort(List<Point> neighbors) {
         if (neighbors == null) return null;
         List<Point> sortedNeighbors = new ArrayList<>();
-        Map<Double, Point> neighborsWithDegree = new TreeMap<Double, Point>();
-        for (int i = 0; i < neighbors.size(); i++) {
-            double degree = TiltAngle(center, neighbors.get(i));
-            neighborsWithDegree.put(degree, neighbors.get(i));
+        Map<Double, Point> neighborsWithDegree = new TreeMap<>();
+        for (Point neighbor : neighbors) {
+            double degree = TiltAngle(center, neighbor);
+            neighborsWithDegree.put(degree, neighbor);
 
         }
         for (Map.Entry<Double, Point> entry : neighborsWithDegree.entrySet()) {

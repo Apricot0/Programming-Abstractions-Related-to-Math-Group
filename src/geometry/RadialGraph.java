@@ -27,8 +27,8 @@ public class RadialGraph extends Shape {
     public RadialGraph(Point center, List<Point> neighbors) {
         this.center = center;
         double length = Distance(center, neighbors.get(0));
-        for (int i = 0; i < neighbors.size(); i++) {
-            if (Distance(neighbors.get(i), center) != length) {
+        for (Point neighbor : neighbors) {
+            if (Distance(neighbor, center) != length) {
                 throw new IllegalArgumentException("Not all edges have the same length! ");
             }
         }
@@ -51,7 +51,7 @@ public class RadialGraph extends Shape {
             return this;
         }
 
-        List<Point> newNeighbors = new ArrayList<Point>();
+        List<Point> newNeighbors = new ArrayList<>();
         for (Point p : neighbors) {
             double newX, newY;
             newX = ((p.x - center.x) * Math.cos(newDegrees) - (p.y - center.y) * Math.sin(newDegrees)) + center.x;
@@ -60,8 +60,7 @@ public class RadialGraph extends Shape {
             newY = (double) Math.round((newY * 1000)) / 1000;
             newNeighbors.add(new Point(p.name, newX, newY));
         }
-        Point newCenter = center;
-        return new RadialGraph(newCenter, newNeighbors);
+        return new RadialGraph(center, newNeighbors);
     }
 
     @Override
@@ -69,15 +68,14 @@ public class RadialGraph extends Shape {
         if (neighbors == null) {
             return this;
         }
-        List<Point> newNeighbors = new ArrayList<Point>();
+        List<Point> newNeighbors = new ArrayList<>();
         for (Point p : neighbors) {
             double newX, newY;
             newX = p.x + x;
             newY = p.y + y;
             newNeighbors.add(new Point(p.name, newX, newY));
         }
-        Point newCenter = center;
-        return new RadialGraph(newCenter, newNeighbors);
+        return new RadialGraph(center, newNeighbors);
     }
 
     @Override
@@ -86,9 +84,9 @@ public class RadialGraph extends Shape {
         output += center.toString();
         if (neighbors != null) {
             List<Point> sortedNeighbors = GraphSort(neighbors);
-            for (int i = 0; i < sortedNeighbors.size(); i++) {
+            for (Point sortedNeighbor : sortedNeighbors) {
                 output += "; ";
-                output += sortedNeighbors.get(i).toString();
+                output += sortedNeighbor.toString();
             }
         }
         output += "]";
@@ -113,10 +111,10 @@ public class RadialGraph extends Shape {
     private List<Point> GraphSort(List<Point> neighbors) {
         if (neighbors == null) return null;
         List<Point> sortedNeighbors = new ArrayList<>();
-        Map<Double, Point> neighborsWithDegree = new TreeMap<Double, Point>();
-        for (int i = 0; i < neighbors.size(); i++) {
-            double degree = TiltAngle(center, neighbors.get(i));
-            neighborsWithDegree.put(degree, neighbors.get(i));
+        Map<Double, Point> neighborsWithDegree = new TreeMap<>();
+        for (Point neighbor : neighbors) {
+            double degree = TiltAngle(center, neighbor);
+            neighborsWithDegree.put(degree, neighbor);
         }
         for (Map.Entry<Double, Point> entry : neighborsWithDegree.entrySet()) {
             sortedNeighbors.add(entry.getValue());
