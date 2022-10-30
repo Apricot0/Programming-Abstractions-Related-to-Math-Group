@@ -10,7 +10,7 @@ public class Square extends Shape {
     public Point upLeft;
     public Point upRight;
 
-    private List<Point> squarePoints;
+    public List<Point> squarePoints;
     @Override
     public Point center() {
         return center;
@@ -28,8 +28,8 @@ public class Square extends Shape {
             double newX, newY;
             newX =((p.x-center.x)*Math.cos(newDegrees)-(p.y-center.y)*Math.sin(newDegrees))+center.x;
             newY =((p.x-center.x)*Math.sin(newDegrees)+(p.y-center.y)*Math.cos(newDegrees))+center.y;
-            newX = (double)Math.round((newX*10)/10);
-            newY = (double)Math.round((newY*10)/10);
+            newX = (double)Math.round((newX*10))/10;
+            newY = (double)Math.round((newY*10))/10;
             newPoints.add(new Point(p.name,newX,newY));
         }
       List<Point> sorted = GraphSort(newPoints);
@@ -57,7 +57,7 @@ public class Square extends Shape {
         String output = "[";
         if(squarePoints!=null) {
             for (int i = 0; i < squarePoints.size(); i++) {
-                output += "; ";
+                if (i!=0) output += "; ";
                 output += squarePoints.get(i).toString();
             }
         }
@@ -77,7 +77,7 @@ public class Square extends Shape {
         if ( a.equals(b)||b.equals(c)||c.equals(d)||d.equals(a)){
             throw new IllegalArgumentException("Can not have two same points!");
         }
-        if (!verify90(a,b,d)){
+        if (!verify90(b,a,d)){
             throw new IllegalArgumentException("Please make sure every angle is 90 degree");
         }
         double xOfCenter = (downLeft.x+upRight.x)/2;
@@ -111,14 +111,10 @@ public class Square extends Shape {
             if (yDiff>=0){
                 return degree;
             }else{
-                return 360-degree;
-            }
-        }else{
-            if (yDiff>=0){
-                return 180 - degree;
-            }else{
                 return 360 + degree;
             }
+        }else{
+            return 180 + degree;
         }
 
     }

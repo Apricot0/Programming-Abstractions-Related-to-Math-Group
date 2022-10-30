@@ -29,15 +29,12 @@ public class RadialGraph extends Shape {
             if (yDiff>=0){
                 return degree;
             }else{
-                return 360-degree;
-            }
-        }else{
-            if (yDiff>=0){
-                return 180 - degree;
-            }else{
                 return 360 + degree;
             }
+        }else{
+            return 180 - degree;
         }
+
 
     }
     public RadialGraph(Point center) {
@@ -123,7 +120,7 @@ public class RadialGraph extends Shape {
         Point east = new Point("east", 1, 0);
         Point west = new Point("west", -1, 0);
         Point north = new Point("north", 0, 1);
-        Point south = new Point("south", 0, -1);
+        Point south = new Point("south", 1, 0);
         Point toofarsouth = new Point("south", 0, -2);
 
         // A single node is a valid radial graph.
