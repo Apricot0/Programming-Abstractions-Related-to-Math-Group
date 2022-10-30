@@ -19,10 +19,10 @@ public class GeometryTest {
     private static void testRadialGraphSymmetries() {
 
         Point center = new Point("center", 0, 0);
-        Point east   = new Point("east", 1, 0);
-        Point west   = new Point("west", -1, 0);
-        Point north  = new Point("north", 0, 1);
-        Point south  = new Point("south", 0, -1);
+        Point east = new Point("east", 1, 0);
+        Point west = new Point("west", -1, 0);
+        Point north = new Point("north", 0, 1);
+        Point south = new Point("south", 0, -1);
 
         RadialGraph g1 = new RadialGraph(center, Arrays.asList(north, south, east, west));
         System.out.println(g1);
@@ -47,8 +47,8 @@ public class GeometryTest {
 
     private static void testSquareSymmetries() {
         Square sq1 = new Square(new Point("upper-right", 1, 1), new Point("upper-left", 0, 1),
-                                new Point("lower-left", 0, 0), new Point("lower-right", 1, 0));
-        System.out.println(sq1.toString());
+                new Point("lower-left", 0, 0), new Point("lower-right", 1, 0));
+        System.out.println(sq1);
         Square sq2 = sq1.rotateBy(30);
         System.out.println(sq2.toString());
         Square sq3 = sq1.rotateBy(180);
@@ -56,8 +56,8 @@ public class GeometryTest {
 
 
         SquareSymmetries squareSymmetries = new SquareSymmetries();
-        System.out.print(squareSymmetries.areSymmetric(sq1, sq2)); // must return false
-        System.out.print(squareSymmetries.areSymmetric(sq1, sq3)); // must return true
+        System.out.println(squareSymmetries.areSymmetric(sq1, sq2)); // must return false
+        System.out.println(squareSymmetries.areSymmetric(sq1, sq3)); // must return true
 
         // obtain all the 8 symmetries (including the identity) of sq1, and print them one by one (remember that printing
         // will give the string representation of each square, which must follow the specification of Shape's toString()
