@@ -19,10 +19,10 @@ public class GeometryTest {
     private static void testRadialGraphSymmetries() {
 
         Point center = new Point("center", 0, 0);
-        Point east = new Point("east", 1, 0);
-        Point west = new Point("west", -1, 0);
-        Point north = new Point("north", 0, 1);
-        Point south = new Point("south", 0, -1);
+        Point east = new Point("east", 3, 4);
+        Point west = new Point("west", -3, 4);
+        Point north = new Point("north", 3, -4);
+        Point south = new Point("south", -3, -4);
 
         RadialGraph g1 = new RadialGraph(center, Arrays.asList(north, south, east, west));
         System.out.println(g1);
