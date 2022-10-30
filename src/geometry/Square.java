@@ -27,16 +27,18 @@ public class Square extends Shape {
         downLeft = c;
         downRight = d;
         squarePoints = Arrays.asList(upRight, upLeft, downLeft, downRight);
-        //check if 4 edges are equal
-        if (!(Distance(a, b) == Distance(b, c) && Distance(b, c) == Distance(c, d) && Distance(c, d) == Distance(d, a) && Distance(d, a) == Distance(a, d))) {
+        // check if 4 edges are equal
+        if (!(Distance(a, b) == Distance(b, c) && Distance(b, c) == Distance(c, d) && Distance(c, d) == Distance(d, a)
+                && Distance(d, a) == Distance(a, d))) {
             throw new IllegalArgumentException("Not every edges are equal!");
         }
-        //check if 4 points are different
+        // check if 4 points are different
         if (a.equals(b) || b.equals(c) || c.equals(d) || d.equals(a)) {
             throw new IllegalArgumentException("Can not have two same points!");
         }
 
-        //check if one of the angle is right(if it is, and 4 edges are equal, then it must be a square
+        // check if one of the angle is right(if it is, and 4 edges are equal, then it
+        // must be a square
         if (!verify90(b, a, d)) {
             throw new IllegalArgumentException("Please make sure every angle is 90 degree");
         }
@@ -44,7 +46,6 @@ public class Square extends Shape {
         double yofCenter = (downLeft.y + upRight.y) / 2;
         center = new Point("center", xOfCenter, yofCenter);
     }
-
 
     @Override
     public Point center() {
@@ -92,7 +93,8 @@ public class Square extends Shape {
         String output = "[";
         if (squarePoints != null) {
             for (int i = 0; i < squarePoints.size(); i++) {
-                if (i != 0) output += "; ";
+                if (i != 0)
+                    output += "; ";
                 output += squarePoints.get(i).toString();
             }
         }
@@ -100,16 +102,19 @@ public class Square extends Shape {
         return output;
     }
 
-    //ADDITIONAL METHODS BELOW:
+    // ADDITIONAL METHODS BELOW:
 
     /**
-     * Sort the given List in specific order( all other points of this shape are included in increasing order of their angle with respect to the positive x axis (0 to 360 (not included) degrees). )
+     * Sort the given List in specific order( all other points of this shape are
+     * included in increasing order of their angle with respect to the positive x
+     * axis (0 to 360 (not included) degrees). )
      *
      * @param neighbors the list being sorted
      * @return a sorted point list
      */
     private List<Point> GraphSort(List<Point> neighbors) {
-        if (neighbors == null) return null;
+        if (neighbors == null)
+            return null;
         List<Point> sortedNeighbors = new ArrayList<>();
         Map<Double, Point> neighborsWithDegree = new TreeMap<>();
         for (Point neighbor : neighbors) {
@@ -167,7 +172,7 @@ public class Square extends Shape {
      * @return true if it is a right angle else false
      */
     private static boolean verify90(Point a, Point b, Point c) {
-        //move sub graph a b c to b = (0,0) so:
+        // move sub graph a b c to b = (0,0) so:
         Point newA = new Point(a.name, a.x - b.x, a.y - b.y);
         Point newC = new Point(c.name, c.x - b.x, c.y - b.y);
         return (newA.y == -newC.x && newA.x == newC.y);

@@ -9,7 +9,8 @@ public class PlusOrMinusOne {
      * @param x
      */
     public PlusOrMinusOne(int x) {
-        if (!(x == -1 || x == 1)) throw new IllegalArgumentException();
+        if (!(x == -1 || x == 1))
+            throw new IllegalArgumentException();
         value = x;
     }
 
