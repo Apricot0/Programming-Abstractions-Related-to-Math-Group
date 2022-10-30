@@ -136,7 +136,7 @@ public class Square extends Shape {
      * @return the distance between a and b in double.
      */
     private static double Distance(Point a, Point b) {
-        return Math.round(Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))*100)/100;
+        return (double)Math.round(Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))*100)/100;
     }
 
     /**

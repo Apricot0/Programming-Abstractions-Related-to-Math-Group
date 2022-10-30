@@ -18,15 +18,18 @@ public class GeometryTest {
 
     private static void testRadialGraphSymmetries() {
 
+        // Tests are only valid up to three decimal places
         Point center = new Point("center", 0, 0);
-        Point east = new Point("east", 3, 4);
-        Point west = new Point("west", -3, 4);
-        Point north = new Point("north", 3, -4);
-        Point south = new Point("south", -3, -4);
+        Point east = new Point("east", 1, 0);
+        Point west = new Point("west", 0, 1);
+        Point north = new Point("north", -1, 0);
+        Point south = new Point("south", 0, -1);
+        Point other = new Point("other",0.707, 0.707);
+        Point other2 = new Point ( "other2",-0.707, -0.707);
 
-        RadialGraph g1 = new RadialGraph(center, Arrays.asList(north, south, east, west));
+        RadialGraph g1 = new RadialGraph(center, Arrays.asList(north, south, east, west,other,other2));
         System.out.println(g1);
-        RadialGraph g2 = g1.rotateBy(45);
+        RadialGraph g2 = g1.rotateBy(0);
         System.out.println(g2);
         RadialGraph g3 = g1.rotateBy(360);
         System.out.println(g3);
@@ -46,8 +49,8 @@ public class GeometryTest {
     }
 
     private static void testSquareSymmetries() {
-        Square sq1 = new Square(new Point("upper-right", 1, 1), new Point("upper-left", 0, 1),
-                new Point("lower-left", 0, 0), new Point("lower-right", 1, 0));
+        Square sq1 = new Square(new Point("upper-right", 1, 0), new Point("upper-left", 0, 1),
+                new Point("lower-left", -1, 0), new Point("lower-right", 0, -1));
         System.out.println(sq1);
         Square sq2 = sq1.rotateBy(30);
         System.out.println(sq2.toString());

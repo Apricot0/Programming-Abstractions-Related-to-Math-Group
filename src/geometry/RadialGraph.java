@@ -134,7 +134,7 @@ public class RadialGraph extends Shape {
      * @return the distance between a and b in double.
      */
     private static double Distance(Point a, Point b) {
-        return Math.round(Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))*100)/100;
+        return (double)Math.round(Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))*100)/100;
     }
 
     /**
@@ -168,6 +168,7 @@ public class RadialGraph extends Shape {
      * explanation of what is expected)
      */
     public static void main(String... args) {
+        System.out.print(Distance(new Point("a",0,0), new Point("b",1,1)));
         Point center = new Point("center", 0, 0);
         Point east = new Point("east", 1, 0);
         Point west = new Point("west", -1, 0);
