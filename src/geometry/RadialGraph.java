@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RadialGraph extends Shape {
     private Point center;
-    private List<Point> neighbors;
+    public List<Point> neighbors;
 
     public RadialGraph(Point center, List<Point> neighbors) {
         this.center = center;
@@ -14,7 +14,7 @@ public class RadialGraph extends Shape {
                 throw new IllegalArgumentException("Not all edges have the same length! ");
             }
         }
-        this.neighbors = neighbors;
+        this.neighbors = GraphSort(neighbors);
     }
 
     private static double Distance (Point a, Point b){
@@ -32,7 +32,7 @@ public class RadialGraph extends Shape {
                 return 360 + degree;
             }
         }else{
-            return 180 - degree;
+            return 180 + degree;
         }
 
 
@@ -53,8 +53,8 @@ public class RadialGraph extends Shape {
             double newX, newY;
             newX =((p.x-center.x)*Math.cos(newDegrees)-(p.y-center.y)*Math.sin(newDegrees))+center.x;
             newY =((p.x-center.x)*Math.sin(newDegrees)+(p.y-center.y)*Math.cos(newDegrees))+center.y;
-            newX = (double)Math.round((newX*10)/10);
-            newY = (double)Math.round((newY*10)/10);
+            newX = (double)Math.round((newX*1000))/1000;
+            newY = (double)Math.round((newY*1000))/1000;
             newNeighbors.add(new Point(p.name,newX,newY));
         }
         Point newCenter = center;
@@ -120,7 +120,7 @@ public class RadialGraph extends Shape {
         Point east = new Point("east", 1, 0);
         Point west = new Point("west", -1, 0);
         Point north = new Point("north", 0, 1);
-        Point south = new Point("south", 1, 0);
+        Point south = new Point("south", 0, -1);
         Point toofarsouth = new Point("south", 0, -2);
 
         // A single node is a valid radial graph.

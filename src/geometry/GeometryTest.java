@@ -12,10 +12,10 @@ import java.util.List;
 public class GeometryTest {
 
     public static void main(String... args) {
-        /*testRadialGraphSymmetries();*/
+        testRadialGraphSymmetries();
         testSquareSymmetries();
     }
-/*
+
     private static void testRadialGraphSymmetries() {
 
         Point center = new Point("center", 0, 0);
@@ -25,14 +25,18 @@ public class GeometryTest {
         Point south  = new Point("south", 0, -1);
 
         RadialGraph g1 = new RadialGraph(center, Arrays.asList(north, south, east, west));
+        System.out.println(g1);
         RadialGraph g2 = g1.rotateBy(45);
+        System.out.println(g2);
         RadialGraph g3 = g1.rotateBy(360);
+        System.out.println(g3);
         RadialGraph g4 = g1.rotateBy(180);
+        System.out.println(g4);
 
         RadialGraphSymmetries graphSymmetries = new RadialGraphSymmetries();
-        graphSymmetries.areSymmetric(g1, g2); // must return false
-        graphSymmetries.areSymmetric(g1, g3); // must return true
-        graphSymmetries.areSymmetric(g3, g4); // must return true
+        System.out.println(graphSymmetries.areSymmetric(g1, g2)); // must return false
+        System.out.println(graphSymmetries.areSymmetric(g1, g3)); // must return true
+        System.out.println(graphSymmetries.areSymmetric(g3, g4)); // must return true
 
         // obtain all the symmetries (including the identity) of g1, and print them one by one (remember that printing
         // will give the string representation of each radial graph, which must follow the specification of Shape's
@@ -40,7 +44,7 @@ public class GeometryTest {
         List<RadialGraph> symmetries = graphSymmetries.symmetriesOf(g1);
         for (RadialGraph g : symmetries) System.out.println(g);
     }
- */
+
     private static void testSquareSymmetries() {
         Square sq1 = new Square(new Point("upper-right", 1, 1), new Point("upper-left", 0, 1),
                                 new Point("lower-left", 0, 0), new Point("lower-right", 1, 0));
