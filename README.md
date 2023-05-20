@@ -1,4 +1,4 @@
-# Programming Abstractions (WARN: PLEASE DO NOT PLAGIARISM)
+# Programming Abstractions (WARNNING: PLEASE DO NOT PLAGIARISM)
 *Computer Science, Stony Brook University*
 
 In this assignment, you will be using Java (make sure it is JDK 1.8 compliant) for programming. Moreover,
