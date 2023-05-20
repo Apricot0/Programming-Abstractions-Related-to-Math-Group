@@ -1,4 +1,4 @@
-# Programming Abstractions – Homework II
+# Programming Abstractions
 *Computer Science, Stony Brook University*
 
 In this assignment, you will be using Java (make sure it is JDK 1.8 compliant) for programming. Moreover,
@@ -216,18 +216,5 @@ As shown in Fig. **1**, a square has eight symmetries (including the identity tr
 Your task in this question is to implement the symmetries of Square and RadialGraph in the two classes SquareSymmetries and RadialGraphSymmetries, respectively.
 
 In this question, the total points are split equally between the implementation of radial graph symmetries and square symmetries.
-
----
-
-- You may have additional methods in your classes even if such methods are not required by the interface. Such additional methods, however, must not be public.
-- Any interface code given to you must not be changed!
-
-- Please keep in mind these homework-related points mentioned in the syllabus.
-
-- What to submit? The complete codebase (including classes and interfaces that were already given to you) as a single .zip file. Your zip file, once extracted, must contain three folders: core, arithmetic, and geometry. Your solution to the first question is expected to be in the arithmetic package, while the rest of your code must be in the geometry package.
-
-*Deviations from the expected submission format carries varying amounts of score penalty (depending on the amount of deviation).*
-
-
 
 
